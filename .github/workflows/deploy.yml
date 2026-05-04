@@ -4,22 +4,21 @@ on:
   push:
     branches:
       - main
-  # Allow manual trigger from Actions tab
   workflow_dispatch:
 
-# Grant permissions for GitHub Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  # ─── Build ──────────────────────────────────────────────────────────────────
   build:
     runs-on: ubuntu-latest
     steps:
@@ -43,10 +42,8 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Next.js static export outputs to ./out
           path: ./out
 
-  # ─── Deploy ─────────────────────────────────────────────────────────────────
   deploy:
     environment:
       name: github-pages
