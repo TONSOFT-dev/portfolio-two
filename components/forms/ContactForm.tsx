@@ -180,35 +180,39 @@ export default function ContactForm() {
 
     try {
       const sanitizedData = sanitizeContactFormData(formData);
-      const response = await fetch("/api/contact", {
+
+      // Submit to Formspree (works on static hosting — no server required)
+      const response = await fetch("https://formspree.io/f/meenadbp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(sanitizedData),
+        body: JSON.stringify({
+          firstName: sanitizedData.firstName,
+          lastName: sanitizedData.lastName,
+          email: sanitizedData.email,
+          phone: sanitizedData.phone,
+          message: sanitizedData.message,
+        }),
       });
 
       const result = await response.json();
 
       if (response.ok) {
-        // Reset form after successful submission
         resetForm();
-        // Show success toast
         showToast(
           "success",
-          result.message ||
-            "Thank you for your message! We'll get back to you soon."
+          "Thank you for your message! We'll get back to you within 24 hours."
         );
       } else {
-        // Show error toast
         showToast(
           "error",
-          result.error || "Something went wrong. Please try again."
+          result?.errors?.[0]?.message || "Something went wrong. Please try again."
         );
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      // Show error toast
       showToast(
         "error",
         "Network error. Please check your connection and try again."

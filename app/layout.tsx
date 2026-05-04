@@ -21,7 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.tonsoft.io"),
+  metadataBase: new URL("https://tonsoft.org"),
   title: {
     default: "TONSOFT — Scalable Software Systems",
     template: "%s | TONSOFT",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.tonsoft.io",
+    url: "https://tonsoft.org",
     title: "TONSOFT — Scalable Software Systems",
     description:
       "TONSOFT is a modern software company building scalable, secure, and intelligent software systems.",
