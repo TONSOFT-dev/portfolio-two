@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -14,18 +13,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutShowroomSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const bgImageRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      // Parallax Background Image
       gsap.fromTo(
-        bgImageRef.current,
-        {
-          yPercent: -15,
-          scale: 1.15,
-        },
+        bgRef.current,
+        { yPercent: -15, scale: 1.15 },
         {
           yPercent: 15,
           scale: 1,
@@ -34,17 +29,14 @@ export default function AboutShowroomSection() {
             trigger: containerRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1.5, // Smoother inertia
+            scrub: 1.5,
           },
         }
       );
 
-      // Card "Floating" Parallax (moves slightly faster/slower than scroll)
       gsap.fromTo(
         cardRef.current,
-        {
-          y: 50,
-        },
+        { y: 50 },
         {
           y: -50,
           ease: "none",
@@ -52,7 +44,7 @@ export default function AboutShowroomSection() {
             trigger: containerRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 2, // Heavier, more luxurious inertia
+            scrub: 2,
           },
         }
       );
@@ -63,80 +55,122 @@ export default function AboutShowroomSection() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen overflow-hidden overflow-x-hidden bg-coal"
+      className="relative h-screen overflow-hidden overflow-x-hidden"
+      style={{ background: "#0E2336" }}
     >
-      {/* Background Images Wrapper - Parallax Target */}
-      <div ref={bgImageRef} className="absolute inset-0 w-full h-full">
-        {/* Desktop Image */}
-        <div className="hidden lg:block absolute inset-0 m-3 md:m-3 lg:m-4 xl:m-5 rounded-2xl overflow-hidden will-change-transform">
-          <Image
-            src="/images/about/our-showroom.webp"
-            alt="Our Showroom"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-            quality={90}
-          />
-          {/* Subtle overlay for better text readability if needed, though card has its own */}
-          <div className="absolute inset-0 bg-black/10" />
-        </div>
+      {/* Animated CSS gradient background (parallax target) */}
+      <div ref={bgRef} className="absolute inset-0 w-full h-full">
+        <div className="absolute inset-0 m-3 md:m-3 lg:m-4 xl:m-5 rounded-2xl overflow-hidden will-change-transform">
+          {/* Base navy */}
+          <div className="absolute inset-0" style={{ background: "#0A1C2E" }} />
 
-        {/* Mobile Image */}
-        <div className="lg:hidden absolute inset-0 m-3 md:m-3 lg:m-4 xl:m-5 rounded-2xl overflow-hidden will-change-transform">
-          <Image
-            src="/images/about/our-showroom.webp"
-            alt="Our Showroom"
-            fill
-            priority
-            className="object-cover object-left"
-            sizes="100vw"
-            quality={90}
+          {/* Large amber orb top-right */}
+          <div
+            className="absolute rounded-full"
+            style={{
+              width: "70%",
+              height: "70%",
+              top: "-20%",
+              right: "-10%",
+              background:
+                "radial-gradient(circle, rgba(254,143,4,0.18) 0%, transparent 65%)",
+              filter: "blur(80px)",
+            }}
           />
-          <div className="absolute inset-0 bg-black/10" />
+
+          {/* Amber orb bottom-left */}
+          <div
+            className="absolute rounded-full"
+            style={{
+              width: "50%",
+              height: "50%",
+              bottom: "-10%",
+              left: "-5%",
+              background:
+                "radial-gradient(circle, rgba(254,143,4,0.10) 0%, transparent 65%)",
+              filter: "blur(60px)",
+            }}
+          />
+
+          {/* Grid pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.05]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(254,143,4,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(254,143,4,0.5) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+
+          {/* Bottom fade */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(14,35,54,0.7) 0%, transparent 60%)",
+            }}
+          />
         </div>
       </div>
 
-      {/* Content - Left Aligned Card */}
+      {/* Content */}
       <div className="relative z-10 h-full w-full pointer-events-none">
         <div className="absolute inset-0 m-3 md:m-3 lg:m-4 xl:m-5 flex items-center">
           <div className="w-full max-w-[1315px] mx-auto px-0 h-full flex items-center">
             <Container className="h-full flex items-center">
               <div
                 ref={cardRef}
-                className="pointer-events-auto bg-coal/85 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 xl:p-8 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-auto max-h-[90%] flex flex-col will-change-transform"
+                className="pointer-events-auto backdrop-blur-md border shadow-2xl rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 xl:p-8 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl h-auto max-h-[90%] flex flex-col will-change-transform"
+                style={{
+                  background: "rgba(14,35,54,0.85)",
+                  borderColor: "rgba(254,143,4,0.2)",
+                }}
               >
                 <div className="mb-4">
-                  <SectionHeader text="OUR SHOWROOM" />
+                  <SectionHeader text="OUR VISION" />
                 </div>
 
                 <FadeIn delay={0.1}>
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[46px] font-medium text-pure leading-[1.2] mb-4 sm:mb-5 md:mb-6">
-                    The Art of Luxury, Designed for Her
-                  </h1>
+                  <h2
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[46px] font-bold text-pure leading-[1.2] mb-4 sm:mb-5 md:mb-6"
+                    style={{ fontFamily: "var(--font-syne)" }}
+                  >
+                    World-Class Software,{" "}
+                    <span style={{ color: "#FE8F04" }}>Built to Last</span>
+                  </h2>
                 </FadeIn>
 
                 <div className="flex-1 flex flex-col justify-end min-h-0">
-                  <FadeIn delay={0.3}>
-                    <div className="relative h-[180px] sm:h-[220px] md:h-[260px] lg:h-[280px] xl:h-[280px] p-2 sm:p-3 md:p-4 rounded-lg overflow-hidden mb-3 sm:mb-4 group">
-                      <Image
-                        src="/images/about/our-showroom.webp"
-                        alt="Our Showroom Interior"
-                        fill
-                        className="object-cover rounded-lg group-hover:scale-105 transition-transform duration-700 ease-out"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                        quality={90}
-                      />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 rounded-lg bg-linear-to-t from-coal/95 to-[rgba(8,8,5,0.2)]" />
+                  <FadeIn delay={0.2}>
+                    <p className="text-slate text-sm sm:text-base leading-relaxed mb-4">
+                      To build world-class software products that solve real-world problems
+                      with performance, scalability, and simplicity.
+                    </p>
+                    <p className="text-slate text-sm sm:text-base leading-relaxed mb-6">
+                      We deliver high-quality software solutions while continuously
+                      innovating and adapting to emerging technologies — bringing
+                      Amazon-level engineering standards to every project we touch.
+                    </p>
+                  </FadeIn>
 
-                      {/* Address text above image */}
-                      <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 right-2 sm:right-3 md:right-4 z-10">
-                        <p className="text-pure text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg leading-relaxed font-light">
-                          Fathima Al Suweidi - Warehouse No. 5, Street 54, Dubai
-                          Investment Park 1, Dubai, United Arab Emirates
-                        </p>
-                      </div>
+                  {/* Values chips */}
+                  <FadeIn delay={0.3}>
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {["Innovation", "Reliability", "Security", "Performance"].map(
+                        (value) => (
+                          <span
+                            key={value}
+                            className="px-3 py-1 rounded-full text-xs font-semibold"
+                            style={{
+                              background: "rgba(254,143,4,0.12)",
+                              color: "#FE8F04",
+                              border: "1px solid rgba(254,143,4,0.3)",
+                            }}
+                          >
+                            {value}
+                          </span>
+                        )
+                      )}
                     </div>
                   </FadeIn>
 
@@ -144,10 +178,10 @@ export default function AboutShowroomSection() {
                     <Button
                       href="/contact"
                       variant="outline"
-                      className="text-solis border-solis hover:bg-transparent hover:text-solis w-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg"
+                      className="w-full text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg text-solis border-solis hover:bg-transparent hover:text-solis"
                       arrowBgClassName="bg-solis"
                     >
-                      Contact Us
+                      Work With Us
                     </Button>
                   </FadeIn>
                 </div>

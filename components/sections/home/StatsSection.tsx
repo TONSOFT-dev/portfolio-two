@@ -26,7 +26,6 @@ const StatCard = ({
   const isFirst = index === 0;
   const isLast = index === total - 1;
 
-  // Alignment classes for Large Screens
   const textAlignClass = isFirst
     ? "lg:text-left"
     : isLast
@@ -78,21 +77,22 @@ export default function StatsSection() {
   return (
     <section className="py-20 bg-noir">
       <Container>
-        {/* Header and Headline - Split Layout */}
+        {/* Header and Headline */}
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-8 sm:mb-10 md:mb-12">
-          {/* Left: SectionHeader and Headline */}
           <div className="flex-1">
-            <SectionHeader text="ABOUT US" />
+            <SectionHeader text="WHO WE ARE" />
             <FadeIn delay={0.1}>
-              <h2 className="max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium text-pure leading-[1.3]">
-                Exclusive luxury cars curated for women who expect safety,
-                comfort, and sophistication.
+              <h2
+                className="max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-medium text-pure leading-[1.3]"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                Enterprise-grade software engineering, built for the modern world.
               </h2>
             </FadeIn>
           </div>
         </div>
 
-        {/* Stats Grid - In a row */}
+        {/* Stats Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-between items-stretch w-full gap-6 sm:gap-4 md:gap-6 lg:gap-8 mb-12 sm:mb-14 md:mb-16">
           {statsWithLabels.map((stat, index) => (
             <StatCard
@@ -104,25 +104,25 @@ export default function StatsSection() {
           ))}
         </div>
 
-        {/* Bottom Content - Text and Button */}
+        {/* Bottom Content */}
         <div className="grid grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-4">
-          {/* Left: Description */}
+          {/* Description */}
           <FadeIn
             delay={0.6}
             className="col-span-12 md:col-span-12 lg:col-span-5"
           >
             <p className="text-slate text-sm sm:text-base md:text-lg lg:text-base leading-relaxed">
-              At Falconics Pink, we combine luxury, comfort, and trusted service
-              to deliver a seamless driving experience for women across the UAE.
-              Every vehicle in our fleet is maintained to the highest standards,
-              ensuring safety, elegance, and confidence on every journey.
+              TONSOFT is a next-generation software development company focused on building
+              reliable, scalable, and secure systems for modern businesses. Founded by a
+              former Senior Engineer at Amazon Web Services, we bring global engineering
+              standards to every project.
             </p>
           </FadeIn>
 
-          {/* Gap - Hidden on mobile/tablet, visible on lg+ */}
+          {/* Gap */}
           <div className="hidden lg:block lg:col-span-3" />
 
-          {/* Right: CTA Button */}
+          {/* CTA Button */}
           <FadeIn
             delay={0.7}
             className="col-span-12 md:col-span-12 lg:col-span-4 flex items-start md:items-end"

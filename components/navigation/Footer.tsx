@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, Twitter, Youtube } from "lucide-react";
+import { Linkedin, Twitter, Github } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -9,18 +9,21 @@ import Logo from "./Logo";
 import Button from "@/components/ui/Button";
 import Flip3DText from "@/components/animations/Flip3DText";
 
-const mainPages = [
+const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Models", href: "/models" },
-  { name: "Blog", href: "/blog" },
+  { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
+  { name: "Tech Stack", href: "/tech-stack" },
+  { name: "Projects", href: "/projects" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
 
 const socialLinks = [
-  { name: "Instagram", href: "#", icon: Instagram },
-  { name: "Twitter (X)", href: "#", icon: Twitter },
-  { name: "YouTube", href: "#", icon: Youtube },
+  { name: "LinkedIn", href: "https://linkedin.com/company/tonsoft", icon: Linkedin },
+  { name: "GitHub", href: "https://github.com/tonsoft", icon: Github },
+  { name: "Twitter (X)", href: "https://twitter.com/tonsoft", icon: Twitter },
 ];
 
 const containerVariants: Variants = {
@@ -69,7 +72,7 @@ export default function Footer() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="bg-noir text-pure pt-16 pb-8 border-t border-coal"
+      className="bg-noir text-pure pt-16 pb-8 border-t border-[rgba(254,143,4,0.15)]"
     >
       <div className="w-full max-w-[1315px] mx-auto px-5 xl:px-0">
         <motion.div
@@ -86,34 +89,35 @@ export default function Footer() {
             </motion.div>
             <motion.p
               variants={itemVariants}
-              className="text-slate max-w-md mb-6"
+              className="text-slate max-w-md mb-6 leading-relaxed"
             >
-              Falconics Pink is a women-centric luxury car rental service in
-              Dubai, offering curated premium cars, trusted women drivers, and
-              seamless, secure bookings.
+              Building Scalable, Secure &amp; Intelligent Software Systems.
+              Founded by a former Senior Engineer at Amazon Web Services — bringing
+              global engineering standards to every project.
             </motion.p>
             <motion.div variants={itemVariants}>
               <Button
                 href="/contact"
                 variant="rounded-outline"
                 showArrow={true}
-                className="text-pure border-pure"
+                className="text-pure border-solis hover:border-solis"
               >
-                Book Now
+                Get in Touch
               </Button>
             </motion.div>
           </motion.div>
 
-          {/* Main Pages */}
+          {/* Quick Links */}
           <motion.div variants={itemVariants}>
             <motion.h3
               variants={itemVariants}
               className="text-lg font-semibold mb-4 text-solis"
+              style={{ fontFamily: "var(--font-syne)" }}
             >
-              Main Pages
+              Quick Links
             </motion.h3>
             <ul className="space-y-1">
-              {mainPages.map((page, index) => (
+              {quickLinks.map((page, index) => (
                 <motion.li
                   key={page.name}
                   custom={index}
@@ -125,10 +129,10 @@ export default function Footer() {
                   >
                     <Flip3DText
                       defaultContent={
-                        <span className="text-pure text-left">{page.name}</span>
+                        <span className="text-slate text-left hover:text-pure">{page.name}</span>
                       }
                       hoverContent={
-                        <span className="text-pure text-left">{page.name}</span>
+                        <span className="text-left" style={{ color: "#FE8F04" }}>{page.name}</span>
                       }
                       axis="x"
                       duration={0.6}
@@ -141,11 +145,37 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Follow Us */}
+          {/* Contact & Social */}
           <motion.div variants={itemVariants}>
             <motion.h3
               variants={itemVariants}
               className="text-lg font-semibold mb-4 text-solis"
+              style={{ fontFamily: "var(--font-syne)" }}
+            >
+              Contact
+            </motion.h3>
+            <div className="space-y-3 mb-6">
+              <p className="text-slate text-sm leading-relaxed">
+                📧{" "}
+                <a
+                  href="mailto:hello@tonsoft.io"
+                  className="hover:text-solis transition-colors"
+                >
+                  hello@tonsoft.io
+                </a>
+              </p>
+              <p className="text-slate text-sm leading-relaxed">
+                📍 Sri Lanka · Available Globally Remote
+              </p>
+              <p className="text-slate text-sm leading-relaxed">
+                🕐 Response within 24 hours
+              </p>
+            </div>
+
+            <motion.h3
+              variants={itemVariants}
+              className="text-lg font-semibold mb-3 text-solis"
+              style={{ fontFamily: "var(--font-syne)" }}
             >
               Follow Us
             </motion.h3>
@@ -166,13 +196,13 @@ export default function Footer() {
                     >
                       <Flip3DText
                         defaultContent={
-                          <span className="flex items-center gap-2 text-pure text-left">
+                          <span className="flex items-center gap-2 text-slate text-left">
                             <IconComponent className="w-4 h-4 shrink-0" />
                             {social.name}
                           </span>
                         }
                         hoverContent={
-                          <span className="flex items-center gap-2 text-pure text-left">
+                          <span className="flex items-center gap-2 text-left" style={{ color: "#FE8F04" }}>
                             <IconComponent className="w-4 h-4 shrink-0" />
                             {social.name}
                           </span>
@@ -193,35 +223,13 @@ export default function Footer() {
         {/* Bottom Bar */}
         <motion.div
           variants={itemVariants}
-          className="py-5 border-t border-slate/20 flex flex-col sm:flex-row justify-between items-center gap-4"
+          className="py-5 border-t border-[rgba(254,143,4,0.15)] flex flex-col sm:flex-row justify-between items-center gap-4"
         >
-          <motion.div
-            variants={itemVariants}
-            className="text-slate text-sm flex items-center justify-center"
-          >
-            <span className="pb-[6px]">Powered by</span>{" "}
-            <a
-              href="https://backergysoft.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-pure hover:text-solis transition-colors inline-block ml-1"
-            >
-              <Flip3DText
-                defaultContent={
-                  <span className="text-pure text-left">Backergysoft</span>
-                }
-                hoverContent={
-                  <span className="text-pure text-left">Backergysoft</span>
-                }
-                axis="x"
-                duration={0.6}
-                transformOrigin="left center"
-                className=""
-              />
-            </a>
-          </motion.div>
           <motion.p variants={itemVariants} className="text-slate text-sm">
-            © {new Date().getFullYear()} Falconics Pink. All rights reserved.
+            © {new Date().getFullYear()} TONSOFT. All rights reserved. | Built with precision.
+          </motion.p>
+          <motion.p variants={itemVariants} className="text-slate text-sm">
+            Sri Lanka · Global Remote
           </motion.p>
         </motion.div>
       </div>

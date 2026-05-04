@@ -1,24 +1,20 @@
 // ============================================================================
-// NAVIGATION CONFIGURATION
+// NAVIGATION CONFIGURATION — TONSOFT
 // ============================================================================
 
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Models", href: "/models" },
-  { name: "Blog", href: "/blog" },
+  { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
+  { name: "Tech Stack", href: "/tech-stack" },
+  { name: "Projects", href: "/projects" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ] as const;
 
-export const LOGO_CONFIG = {
-  src: "/images/logo/logo.png",
-  alt: "Falconics Pink Logo",
-  width: 300,
-  height: 64,
-} as const;
-
 export const GLASS_CLASSES =
-  "bg-[rgba(255,255,255,0.16)] backdrop-blur-3xl border border-[rgba(255,255,255,0.32)] rounded-xl" as const;
+  "bg-[rgba(14,35,54,0.85)] backdrop-blur-3xl border border-[rgba(254,143,4,0.2)] rounded-xl" as const;
 
 // Dropdown animation variants
 export const DROPDOWN_ANIMATION = {

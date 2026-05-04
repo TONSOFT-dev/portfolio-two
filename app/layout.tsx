@@ -1,51 +1,60 @@
 import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
+import { Syne, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/navigation/Header";
 import Footer from "@/components/navigation/Footer";
 import { SmoothScrollProvider } from "@/components/animations/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.falconicspink.com"),
+  metadataBase: new URL("https://www.tonsoft.io"),
   title: {
-    default: "Falconics Pink - Women-Centric Luxury Car Rental in Dubai",
-    template: "%s | Falconics Pink",
+    default: "TONSOFT — Scalable Software Systems",
+    template: "%s | TONSOFT",
   },
   description:
-    "Falconics Pink is a women-centric luxury car rental service in Dubai, offering curated premium cars, trusted women drivers, and seamless, secure bookings.",
+    "TONSOFT is a modern software company building scalable, secure, and intelligent software systems. Founded by a former Senior Engineer at Amazon Web Services.",
   keywords: [
-    "luxury car rental Dubai",
-    "women car rental Dubai",
-    "premium car rental UAE",
-    "luxury car hire Dubai",
-    "women drivers Dubai",
-    "Falconics Pink",
+    "software development",
+    "cloud architecture",
+    "AWS engineering",
+    "distributed systems",
+    "DevOps",
+    "microservices",
+    "TONSOFT",
+    "enterprise software",
   ],
-  authors: [{ name: "Falconics Pink" }],
-  creator: "Falconics Pink",
-  publisher: "Falconics Pink",
+  authors: [{ name: "TONSOFT" }],
+  creator: "TONSOFT",
+  publisher: "TONSOFT",
   openGraph: {
     type: "website",
-    locale: "en_AE",
-    url: "https://www.falconicspink.com",
-    title: "Falconics Pink - Women-Centric Luxury Car Rental in Dubai",
+    locale: "en_US",
+    url: "https://www.tonsoft.io",
+    title: "TONSOFT — Scalable Software Systems",
     description:
-      "Falconics Pink is a women-centric luxury car rental service in Dubai, offering curated premium cars, trusted women drivers, and seamless, secure bookings.",
-    siteName: "Falconics Pink",
+      "TONSOFT is a modern software company building scalable, secure, and intelligent software systems.",
+    siteName: "TONSOFT",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Falconics Pink - Women-Centric Luxury Car Rental in Dubai",
+    title: "TONSOFT — Scalable Software Systems",
     description:
-      "Falconics Pink is a women-centric luxury car rental service in Dubai, offering curated premium cars, trusted women drivers, and seamless, secure bookings.",
+      "TONSOFT is a modern software company building scalable, secure, and intelligent software systems.",
   },
   robots: {
     index: true,
@@ -68,7 +77,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={figtree.variable}
+      className={`${syne.variable} ${inter.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

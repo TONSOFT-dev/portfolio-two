@@ -1,20 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Custom Colors */
-  --color-noir: #080805;
-  --color-slate: #999999;
+  /* TONSOFT Brand Colors */
+  --color-primary: #FE8F04;       /* Amber - CTAs, highlights */
+  --color-secondary: #0E2336;     /* Navy - backgrounds */
+  --color-surface: #122840;       /* Slightly lighter navy for cards */
+  --color-border: rgba(254,143,4,0.25);
+
+  /* Legacy mapped tokens (keep names, change values) */
+  --color-noir: #0E2336;          /* Was #080805 black → now navy */
+  --color-slate: #94A3B8;         /* Muted text */
   --color-pure: #ffffff;
   --color-glint: #ffffff52;
   --color-frost: #ffffff29;
   --color-ashen: #444444;
-  --color-coal: #1a1a1a;
+  --color-coal: #122840;          /* Was #1a1a1a dark gray → now surface navy */
   --color-pearl: #dddddd;
-  --color-solis: #d4d414;
-  --color-blaze: #ff5050;
+  --color-solis: #FE8F04;         /* Was #d4d414 yellow → now amber */
+  --color-blaze: #FE8F04;         /* Was #ff5050 red → now amber */
 
   /* Font Family */
-  --font-family-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-heading: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
 
   /* Breakpoints */
   --breakpoint-xs: 320px;
@@ -37,10 +44,14 @@
   }
 
   body {
-    background: #080805;
+    background: #0E2336;
     color: #ffffff;
-    font-family: var(--font-figtree), sans-serif;
+    font-family: var(--font-inter), sans-serif;
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-syne), var(--font-inter), sans-serif;
   }
 }
 
@@ -67,9 +78,28 @@
     pointer-events: none;
   }
 
-  /* Prose styles for blog content */
+  /* TONSOFT hero gradient background */
+  .tonsoft-hero-bg {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(254,143,4,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(14,35,54,0.9) 0%, transparent 60%),
+      #0E2336;
+  }
+
+  /* Animated ambient orb */
+  @keyframes orb-pulse {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.1); }
+  }
+
+  .tonsoft-orb {
+    animation: orb-pulse 6s ease-in-out infinite;
+  }
+
+  /* Prose styles for blog/products content */
   .prose h2 {
     color: #ffffff;
+    font-family: var(--font-syne), sans-serif;
     font-size: 1.75rem;
     font-weight: 700;
     margin-top: 2rem;
@@ -77,18 +107,18 @@
   }
 
   .prose p {
-    color: #999999;
+    color: #94A3B8;
     line-height: 1.8;
     margin-bottom: 1.5rem;
   }
 
   .prose a {
-    color: #d4d414;
+    color: #FE8F04;
     text-decoration: underline;
   }
 
   .prose a:hover {
-    color: #b8b812;
+    color: #e67d00;
   }
 
   /* Custom Scrollbar Styles */
@@ -102,21 +132,21 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(68, 68, 68, 0.5);
+    background: rgba(254, 143, 4, 0.3);
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(68, 68, 68, 0.7);
+    background: rgba(254, 143, 4, 0.5);
     background-clip: padding-box;
   }
 
   /* Firefox scrollbar */
   .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: rgba(68, 68, 68, 0.5) transparent;
+    scrollbar-color: rgba(254, 143, 4, 0.3) transparent;
   }
 
   /* Toast Animation */

@@ -46,7 +46,6 @@ export default function NavigationMenu({
     };
 
     // Add slight delay to avoid closing immediately when opening
-    // Use 'click' instead of 'mousedown' to avoid race conditions with Link navigation
     const timeoutId = setTimeout(() => {
       document.addEventListener("click", handleClickOutside, true);
     }, 100);
@@ -81,7 +80,7 @@ export default function NavigationMenu({
                   GLASS_CLASSES,
                   "backdrop-blur-3xl"
                 )
-              : "lg:hidden overflow-hidden bg-[rgba(255,255,255,0.16)] backdrop-blur-3xl border-t border-glint/20"
+              : "lg:hidden overflow-hidden bg-[rgba(14,35,54,0.95)] backdrop-blur-3xl border-t border-[rgba(254,143,4,0.2)]"
           )}
         >
           <div
@@ -98,12 +97,11 @@ export default function NavigationMenu({
                   href={link.href}
                   onClick={() => {
                     // Allow navigation to proceed first, then close menu
-                    // Use setTimeout to ensure Next.js navigation happens before menu closes
                     setTimeout(() => {
                       onClose();
                     }, 150);
                   }}
-                  className="block text-pure font-light text-base lg:text-lg xl:text-xl leading-6 hover:text-pure transition-colors duration-200 cursor-pointer"
+                  className="block text-pure font-light text-base lg:text-lg xl:text-xl leading-6 hover:text-solis transition-colors duration-200 cursor-pointer"
                 >
                   <Flip3DText
                     defaultContent={
@@ -112,7 +110,7 @@ export default function NavigationMenu({
                       </span>
                     }
                     hoverContent={
-                      <span className="block text-pure font-light text-base lg:text-lg xl:text-xl leading-6">
+                      <span className="block font-light text-base lg:text-lg xl:text-xl leading-6" style={{ color: "#FE8F04" }}>
                         {link.name}
                       </span>
                     }
@@ -125,16 +123,18 @@ export default function NavigationMenu({
               ))}
             </div>
 
-            {/* Book Now Button */}
-            <div className="pt-2 border-t border-[rgba(255,255,255,0.32)]">
+            {/* Get in Touch CTA Button */}
+            <div className="pt-2 border-t border-[rgba(254,143,4,0.2)]">
               <Button
                 href="/contact"
                 variant="rounded-outline"
                 showArrow={true}
-                className="w-full text-pure lg:text-lg font-light border-pure"
+                className="w-full lg:text-lg font-light"
+                textColor="#FE8F04"
+                borderColor="#FE8F04"
                 onClick={onClose}
               >
-                Book Now
+                Get in Touch
               </Button>
             </div>
           </div>

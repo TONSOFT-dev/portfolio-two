@@ -3,98 +3,98 @@ import { Testimonial } from "@/types";
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Aisha Rahman",
-    location: "Dubai",
+    name: "Michael Chen",
+    location: "Singapore",
     review:
-      "Falconics Pink completely changed how I feel about renting cars in Dubai. The booking was effortless, and the vehicle was spotless and smooth. I felt safe, respected, and genuinely cared for throughout the entire experience.",
+      "TONSOFT built our entire cloud infrastructure from scratch in record time. Their AWS expertise is genuinely world-class — the system has been running at 99.99% uptime ever since launch.",
     rating: 5,
   },
   {
     id: "2",
-    name: "Reema Khan",
-    location: "Abu Dhabi",
+    name: "Sarah Williams",
+    location: "London, UK",
     review:
-      "Falconics Pink makes luxury driving feel accessible and stress-free. The car felt brand new, and I appreciated the focus on safety and comfort for women drivers.",
+      "We hired TONSOFT to redesign our microservices architecture. The result was a system that handled 10x the traffic with half the infrastructure costs. Exceptional engineering.",
     rating: 5,
   },
   {
     id: "3",
-    name: "Hana Al Shamsi",
-    location: "Dubai",
+    name: "Priya Menon",
+    location: "Bangalore, India",
     review:
-      "From the moment I booked, I felt like I was dealing with a brand that truly understands women. The car was immaculate, stylish, and powerful exactly what I wanted.",
+      "Their DevOps automation saved our team weeks of manual work every month. CI/CD pipelines are now fully automated and deployments that used to take hours now take minutes.",
     rating: 5,
   },
   {
     id: "4",
-    name: "Ruba Said",
-    location: "Dubai",
+    name: "Luca Ferrari",
+    location: "Milan, Italy",
     review:
-      "Their attention to detail is unmatched. The interior was spotless, the ride was incredibly smooth, and the team handled everything professionally and kindly.",
+      "TONSOFT delivered a secure, event-driven backend system that handles millions of transactions daily. The attention to security and reliability was outstanding.",
     rating: 5,
   },
   {
     id: "5",
-    name: "Mariam Al Mansoori",
-    location: "Sharjah",
+    name: "Omar Al-Rashid",
+    location: "Dubai, UAE",
     review:
-      "I loved how professional and thoughtful the service was. From choosing the car to driving it home, everything felt curated for women like me who value comfort and elegance.",
+      "Working with Nibras and the TONSOFT team was a pleasure. They understood our business requirements immediately and translated them into a scalable technical solution.",
     rating: 5,
   },
   {
     id: "6",
-    name: "Laila Hassan",
-    location: "Fujairah",
+    name: "Emma Johansson",
+    location: "Stockholm, Sweden",
     review:
-      "Every detail was handled with care from pick-up to drop-off. This is exactly the kind of premium, woman-friendly service Dubai needed.",
+      "Our fintech platform needed to be both highly available and security-hardened. TONSOFT delivered exactly that — and the architecture documentation they provided is thorough and clear.",
     rating: 5,
   },
   {
     id: "7",
-    name: "Farah Al Harthy",
-    location: "Abu Dhabi",
+    name: "James Okafor",
+    location: "Lagos, Nigeria",
     review:
-      "What impressed me most was how safe and supported I felt. The team guided me with every detail and ensured the rental matched my comfort level perfectly.",
+      "The API gateway and Lambda architecture TONSOFT built for us scaled perfectly during our product launch. Zero downtime, even under peak load.",
     rating: 5,
   },
   {
     id: "8",
-    name: "Leen Barakat",
-    location: "Dubai",
+    name: "Yuki Tanaka",
+    location: "Tokyo, Japan",
     review:
-      "As a frequent traveler, I value efficiency. Falconics Pink delivered exactly that — fast booking, a beautiful car, and zero stress.",
+      "TONSOFT's system design consultation was worth every dollar. They identified bottlenecks we hadn't even noticed and provided a clear roadmap to fix them.",
     rating: 5,
   },
   {
     id: "9",
-    name: "Sara Mohammed",
-    location: "Abu Dhabi",
+    name: "Ana Costa",
+    location: "São Paulo, Brazil",
     review:
-      "The team was so supportive and quick to respond on WhatsApp. My G-Wagon was in perfect condition, and the entire process took minutes. Truly the most hassle-free luxury rental I've ever used.",
+      "Incredible depth of knowledge in distributed systems. Our data pipeline now processes events in real-time with sub-100ms latency. Exactly what we needed.",
     rating: 5,
   },
   {
     id: "10",
-    name: "Noor Altaf",
-    location: "Dubai",
+    name: "David Park",
+    location: "Seoul, South Korea",
     review:
-      "Exceptional service. I felt confident, safe, and valued. Falconics Pink will always be my first choice for luxury rentals.",
+      "TONSOFT's AWS Cloud Architecture transformed our startup's infrastructure. We moved from a monolith to microservices smoothly, with zero customer-facing disruption.",
     rating: 5,
   },
   {
     id: "11",
-    name: "Zeina Kaddoura",
-    location: "Sharjah",
+    name: "Fatima Al-Khatib",
+    location: "Riyadh, Saudi Arabia",
     review:
-      "I've tried several rental companies, but none match the elegance and simplicity Falconics Pink offers. The entire experience felt premium and personal.",
+      "Security-first doesn't have to mean slow development — TONSOFT proved that. Our platform passed a rigorous security audit on the first try.",
     rating: 5,
   },
   {
     id: "12",
-    name: "Amal Yusuf",
-    location: "Dubai",
+    name: "Thomas Mueller",
+    location: "Berlin, Germany",
     review:
-      "Finally, a luxury rental service that makes women feel prioritized. Everything felt respectful, seamless, and beautifully organized.",
+      "From requirements to deployment in six weeks. The TONSOFT team operates with a professionalism and speed that's rare in the industry. Highly recommended.",
     rating: 5,
   },
 ];

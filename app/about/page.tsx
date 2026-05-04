@@ -5,9 +5,9 @@ import AboutShowroomSection from "@/components/sections/about/AboutShowroomSecti
 import { statsWithLabels } from "@/lib/data/stats";
 
 export const metadata: Metadata = {
-  title: "About Us - Women-Centric Luxury Car Rental",
+  title: "About TONSOFT — We Build Software That Scales",
   description:
-    "Learn about Falconics Pink, Dubai's premier women-centric luxury car rental service. Discover our mission, values, and commitment to providing safe, comfortable, and luxurious transportation.",
+    "Learn about TONSOFT, a modern software development company founded by a former Senior Engineer at Amazon Web Services. Discover our mission, values, and engineering approach.",
 };
 
 export default function AboutPage() {
@@ -15,29 +15,28 @@ export default function AboutPage() {
     <div className="min-h-screen overflow-x-hidden">
       <AboutHeroSection />
 
-      {/* Story Section - Who We Are */}
+      {/* Who We Are */}
       <AboutStorySection
-        imageSrc="/images/about/who-we-are.jpg"
-        imageAlt="Luxury cars"
         label="Who We Are"
-        title="Falconics Pink is Crafted for Women Who Expect More Than Just a Ride."
+        title="TONSOFT Brings Global Engineering Standards to Every Project."
         paragraphs={[
-          "Enjoy a world-class fleet, smooth bookings, trusted support, and a service experience tailored exclusively for women in the UAE. We combine comfort, reliability, and elegance so every drive feels effortless.",
+          "TONSOFT is a next-generation software development company focused on building reliable, scalable, and secure systems for modern businesses. Founded by a former Senior Engineer at Amazon Web Services, TONSOFT brings global engineering standards to every project — ensuring reliability, performance, and security.",
+          "We combine deep cloud architecture expertise with product-driven engineering to deliver software systems that scale with your business from day one.",
         ]}
         imagePosition="left"
+        useGradientPanel={true}
       />
 
-      {/* Story Section - Our Numbers */}
+      {/* Our Numbers */}
       <AboutStorySection
-        imageSrc="/images/about/our-numbers.jpg"
-        imageAlt="Our Numbers"
         label="Our Numbers"
-        title="Key Statistics That Define Our Journey"
+        title="Key Milestones That Define Our Journey"
         stats={statsWithLabels}
         imagePosition="right"
+        useGradientPanel={true}
       />
 
-      {/* Showroom Section */}
+      {/* Vision Section */}
       <AboutShowroomSection />
     </div>
   );

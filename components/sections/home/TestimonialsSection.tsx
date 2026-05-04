@@ -140,10 +140,11 @@ export default function TestimonialsSection() {
           <h2
             ref={titleRef}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[46px] font-medium text-pure leading-[1.3] mt-4 sm:mt-6"
+            style={{ fontFamily: "var(--font-syne)" }}
           >
-            Because Women Deserve Better
+            Trusted by Engineering Teams
             <br />
-            Here&apos;s What Our Clients Say
+            Around the World
           </h2>
         </div>
 
