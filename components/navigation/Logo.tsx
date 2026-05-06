@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 interface LogoProps {
@@ -14,13 +15,14 @@ export default function Logo({ onClick }: LogoProps) {
       onClick={onClick}
       aria-label="TONSOFT Home"
     >
-      <span
-        className="font-bold tracking-tight leading-none"
-        style={{ fontFamily: "var(--font-syne), sans-serif", fontSize: "clamp(1.4rem, 2.5vw, 1.75rem)" }}
-      >
-        <span style={{ color: "#ffffff" }}>TON</span>
-        <span style={{ color: "#FE8F04" }}>SOFT</span>
-      </span>
+      <Image
+        src="/logo.svg"
+        alt="TONSOFT"
+        width={550}
+        height={550}
+        priority
+        className="h-11 w-auto sm:h-12 md:h-14"
+      />
     </Link>
   );
 }
