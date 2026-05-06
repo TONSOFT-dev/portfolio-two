@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import Logo from "./Logo";
 import MenuToggle from "./MenuToggle";
 import NavigationMenu from "./NavigationMenu";
-import { GLASS_CLASSES } from "./config";
+import { GLASS_CLASSES, NAVBAR_LINKS } from "./config";
+import Flip3DText from "@/components/animations/Flip3DText";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,6 +55,34 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Logo onClick={handleMenuClose} />
+
+          {/* Centered Navbar Links (hidden on mobile/tablet, visible on lg+) */}
+          <div className="hidden lg:flex items-center gap-10 flex-1 justify-center mx-4">
+            {NAVBAR_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-pure font-light text-base xl:text-lg leading-6 hover:text-solis transition-colors duration-200 cursor-pointer"
+              >
+                <Flip3DText
+                  defaultContent={
+                    <span className="block text-pure font-light text-base xl:text-lg leading-6">
+                      {link.name}
+                    </span>
+                  }
+                  hoverContent={
+                    <span className="block font-light text-base xl:text-lg leading-6" style={{ color: "#FE8F04" }}>
+                      {link.name}
+                    </span>
+                  }
+                  axis="x"
+                  duration={0.6}
+                  transformOrigin="center center"
+                  className="w-full"
+                />
+              </Link>
+            ))}
+          </div>
 
           {/* Right Side Controls */}
           <div className="flex items-center gap-3 lg:gap-4">

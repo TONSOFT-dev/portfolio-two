@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
-import { NAV_LINKS, DROPDOWN_ANIMATION, GLASS_CLASSES } from "./config";
+import { HAMBURGER_LINKS, NAV_LINKS, DROPDOWN_ANIMATION, GLASS_CLASSES } from "./config";
 import Flip3DText from "@/components/animations/Flip3DText";
 
 interface NavigationMenuProps {
@@ -91,7 +91,7 @@ export default function NavigationMenu({
           >
             {/* Navigation Links */}
             <div className="flex flex-col gap-2 mb-4">
-              {NAV_LINKS.map((link) => (
+              {(isDropdown ? HAMBURGER_LINKS : NAV_LINKS).map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}

@@ -2,16 +2,23 @@
 // NAVIGATION CONFIGURATION — TONSOFT
 // ============================================================================
 
-export const NAV_LINKS = [
+// Navbar links (centered in header)
+export const NAVBAR_LINKS = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Products", href: "/products" },
-  { name: "Tech Stack", href: "/tech-stack" },
-  { name: "Projects", href: "/projects" },
-  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ] as const;
+
+// Hamburger menu links
+export const HAMBURGER_LINKS = [
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Careers", href: "/careers" },
+] as const;
+
+// Legacy - all links combined
+export const NAV_LINKS = [...NAVBAR_LINKS, ...HAMBURGER_LINKS] as const;
 
 export const GLASS_CLASSES =
   "bg-[rgba(14,35,54,0.85)] backdrop-blur-3xl border border-[rgba(254,143,4,0.2)] rounded-xl" as const;
