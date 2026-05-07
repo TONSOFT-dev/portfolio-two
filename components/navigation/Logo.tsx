@@ -1,6 +1,4 @@
 "use client";
-
-
 import Link from "next/link";
 
 interface LogoProps {
@@ -17,7 +15,10 @@ export default function Logo({ onClick }: LogoProps) {
     >
       <span
         className="font-bold tracking-tight leading-none"
-        style={{ fontFamily: "var(--font-syne), sans-serif", fontSize: "clamp(1.4rem, 2.5vw, 1.75rem)" }}
+        style={{
+          fontFamily: "var(--font-syne), sans-serif",
+          fontSize: "clamp(1.4rem, 2.5vw, 1.75rem)",
+        }}
       >
         <span style={{ color: "#ffffff" }}>TON</span>
         <span style={{ color: "#FE8F04" }}>SOFT</span>
@@ -25,4 +26,3 @@ export default function Logo({ onClick }: LogoProps) {
     </Link>
   );
 }
-
