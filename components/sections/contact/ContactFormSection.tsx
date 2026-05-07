@@ -7,6 +7,8 @@ import { useGSAP } from "@gsap/react";
 import ContactForm from "@/components/forms/ContactForm";
 import Container from "@/components/ui/Container";
 import { Mail, MapPin, Clock } from "lucide-react";
+import Logo from '@/components/navigation/Logo';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -221,22 +223,17 @@ export default function ContactFormSection() {
                   }}
                 />
                 {/* Centered logo text */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <p
-                      className="text-7xl xl:text-8xl font-bold leading-none"
-                      style={{ fontFamily: "var(--font-syne)", color: "rgba(254,143,4,0.12)" }}
-                    >
-                      TON
-                    </p>
-                    <p
-                      className="text-7xl xl:text-8xl font-bold leading-none"
-                      style={{ fontFamily: "var(--font-syne)", color: "rgba(254,143,4,0.08)" }}
-                    >
-                      SOFT
-                    </p>
-                  </div>
-                </div>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+  <div className="opacity-60 blur-none animate-[spin_20s_linear_infinite]"> 
+    <Image
+      src="/images/logo/company-logo.png" 
+      alt="Tonsoft Animated Logo"
+      width={500} 
+      height={400}
+      className="object-contain"
+    />
+  </div>
+</div>
               </div>
             </div>
           </div>

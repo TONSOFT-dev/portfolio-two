@@ -1,5 +1,6 @@
 "use client";
 
+
 import Link from "next/link";
 
 interface LogoProps {
@@ -24,3 +25,4 @@ export default function Logo({ onClick }: LogoProps) {
     </Link>
   );
 }
+
