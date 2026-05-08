@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { services } from "@/lib/data/services";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/animations/FadeIn";
@@ -33,6 +34,19 @@ function ServiceCard({ service, index = 0, totalCards = 4, containerRef }: Servi
           className="relative overflow-hidden rounded-2xl h-[400px] sm:h-[480px] md:h-[440px] lg:h-[480px] xl:h-[560px] min-h-[400px]"
           style={{ background: "#122840" }}
         >
+          {/* Service image layer */}
+          <Image
+            src={service.image}
+            alt={service.name}
+            fill
+            priority={index < 2}
+            className="object-cover opacity-[0.40] group-hover:opacity-[0.55] transition-opacity duration-700"
+            style={{
+              filter: "saturate(1.05) contrast(1.05)",
+              mixBlendMode: "screen",
+            }}
+          />
+
           {/* Animated background glow */}
           <div
             className="absolute inset-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700"
@@ -51,6 +65,9 @@ function ServiceCard({ service, index = 0, totalCards = 4, containerRef }: Servi
               backgroundSize: "40px 40px",
             }}
           />
+
+          {/* Image readability overlay */}
+          <div className="absolute inset-0 bg-[rgba(14,35,54,0.18)]" />
 
           {/* Overlay gradient */}
           <div
