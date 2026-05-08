@@ -7,6 +7,8 @@ import { useGSAP } from "@gsap/react";
 import ContactForm from "@/components/forms/ContactForm";
 import Container from "@/components/ui/Container";
 import { Mail, MapPin, Clock } from "lucide-react";
+import Logo from "@/components/navigation/Logo";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +80,9 @@ export default function ContactFormSection() {
       syncHeights();
 
       if (formRef.current && imageRef.current) {
-        resizeObserver = new ResizeObserver(() => { syncHeights(); });
+        resizeObserver = new ResizeObserver(() => {
+          syncHeights();
+        });
         resizeObserver.observe(formRef.current);
         resizeObserver.observe(imageRef.current);
       }
@@ -90,21 +94,28 @@ export default function ContactFormSection() {
           formRef.current,
           { opacity: 0, y: 60, scale: 0.95 },
           {
-            opacity: 1, y: 0, scale: 1, duration: 1, ease: "power3.out",
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
             scrollTrigger: {
               trigger: formRef.current,
               start: "top 80%",
               end: "top 50%",
               toggleActions: "play none none reverse",
             },
-            onComplete: () => { setTimeout(syncHeights, 100); },
-          }
+            onComplete: () => {
+              setTimeout(syncHeights, 100);
+            },
+          },
         );
       }
 
       if (imageRef.current && imageInnerRef.current) {
         const rect = imageRef.current.getBoundingClientRect();
-        const isInViewport = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+        const isInViewport =
+          rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
 
         if (!isInViewport) {
           gsap.set(imageRef.current, { opacity: 0, x: -60, scale: 0.95 });
@@ -112,9 +123,17 @@ export default function ContactFormSection() {
 
         gsap.fromTo(
           imageRef.current,
-          { opacity: isInViewport ? 1 : 0, x: isInViewport ? 0 : -60, scale: isInViewport ? 1 : 0.95 },
           {
-            opacity: 1, x: 0, scale: 1, duration: 1.2, ease: "power3.out",
+            opacity: isInViewport ? 1 : 0,
+            x: isInViewport ? 0 : -60,
+            scale: isInViewport ? 1 : 0.95,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
             immediateRender: !isInViewport,
             scrollTrigger: {
               trigger: imageRef.current,
@@ -122,8 +141,10 @@ export default function ContactFormSection() {
               end: "top 50%",
               toggleActions: "play none none reverse",
             },
-            onComplete: () => { setTimeout(syncHeights, 100); },
-          }
+            onComplete: () => {
+              setTimeout(syncHeights, 100);
+            },
+          },
         );
 
         gsap.to(imageInnerRef.current, {
@@ -139,32 +160,42 @@ export default function ContactFormSection() {
       }
 
       if (contactMethodsRef.current) {
-        const cards = contactMethodsRef.current.querySelectorAll("a, div[data-card]");
+        const cards =
+          contactMethodsRef.current.querySelectorAll("a, div[data-card]");
         gsap.fromTo(
           cards,
           { opacity: 0, y: 40, scale: 0.9 },
           {
-            opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power2.out",
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
             stagger: 0.15,
             scrollTrigger: {
               trigger: contactMethodsRef.current,
               start: "top 85%",
               toggleActions: "play none none reverse",
             },
-          }
+          },
         );
       }
 
       return () => {
         window.removeEventListener("resize", syncHeights);
-        if (resizeObserver) { resizeObserver.disconnect(); }
+        if (resizeObserver) {
+          resizeObserver.disconnect();
+        }
       };
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
-    <section ref={sectionRef} className="relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 z-10">
+    <section
+      ref={sectionRef}
+      className="relative pb-12 sm:pb-16 md:pb-20 lg:pb-24 z-10"
+    >
       <Container>
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 md:gap-8 lg:gap-4 xl:gap-4 items-stretch mb-12 sm:mb-16 md:mb-20">
@@ -195,18 +226,24 @@ export default function ContactFormSection() {
                 <div
                   className="absolute rounded-full tonsoft-orb"
                   style={{
-                    width: "80%", height: "80%",
-                    top: "-20%", left: "-20%",
-                    background: "radial-gradient(circle, rgba(254,143,4,0.2) 0%, transparent 65%)",
+                    width: "80%",
+                    height: "80%",
+                    top: "-20%",
+                    left: "-20%",
+                    background:
+                      "radial-gradient(circle, rgba(254,143,4,0.2) 0%, transparent 65%)",
                     filter: "blur(60px)",
                   }}
                 />
                 <div
                   className="absolute rounded-full"
                   style={{
-                    width: "60%", height: "60%",
-                    bottom: "-15%", right: "-10%",
-                    background: "radial-gradient(circle, rgba(254,143,4,0.12) 0%, transparent 65%)",
+                    width: "60%",
+                    height: "60%",
+                    bottom: "-15%",
+                    right: "-10%",
+                    background:
+                      "radial-gradient(circle, rgba(254,143,4,0.12) 0%, transparent 65%)",
                     filter: "blur(50px)",
                     animationDelay: "2s",
                   }}
@@ -221,20 +258,15 @@ export default function ContactFormSection() {
                   }}
                 />
                 {/* Centered logo text */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <p
-                      className="text-7xl xl:text-8xl font-bold leading-none"
-                      style={{ fontFamily: "var(--font-syne)", color: "rgba(254,143,4,0.12)" }}
-                    >
-                      TON
-                    </p>
-                    <p
-                      className="text-7xl xl:text-8xl font-bold leading-none"
-                      style={{ fontFamily: "var(--font-syne)", color: "rgba(254,143,4,0.08)" }}
-                    >
-                      SOFT
-                    </p>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                  <div className="opacity-60 blur-none animate-[spin_20s_linear_infinite]">
+                    <Image
+                      src="/images/logo/company-logo.png"
+                      alt="Tonsoft Animated Logo"
+                      width={500}
+                      height={400}
+                      className="object-contain"
+                    />
                   </div>
                 </div>
               </div>
@@ -267,13 +299,28 @@ function ContactMethodCard({ method }: { method: (typeof contactMethods)[0] }) {
       const icon = iconRef.current;
 
       const handleMouseEnter = () => {
-        gsap.to(card, { scale: 0.97, y: -5, duration: 0.4, ease: "power2.out" });
-        gsap.to(icon, { scale: 1.1, rotation: 5, duration: 0.4, ease: "back.out(1.7)" });
+        gsap.to(card, {
+          scale: 0.97,
+          y: -5,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+        gsap.to(icon, {
+          scale: 1.1,
+          rotation: 5,
+          duration: 0.4,
+          ease: "back.out(1.7)",
+        });
       };
 
       const handleMouseLeave = () => {
         gsap.to(card, { scale: 1, y: 0, duration: 0.4, ease: "power2.out" });
-        gsap.to(icon, { scale: 1, rotation: 0, duration: 0.4, ease: "power2.out" });
+        gsap.to(icon, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.4,
+          ease: "power2.out",
+        });
       };
 
       card.addEventListener("mouseenter", handleMouseEnter);
@@ -284,7 +331,7 @@ function ContactMethodCard({ method }: { method: (typeof contactMethods)[0] }) {
         card.removeEventListener("mouseleave", handleMouseLeave);
       };
     },
-    { scope: cardRef }
+    { scope: cardRef },
   );
 
   const isLink = method.link !== "#";
@@ -302,11 +349,16 @@ function ContactMethodCard({ method }: { method: (typeof contactMethods)[0] }) {
           className="w-full h-full rounded-full flex items-center justify-center"
           style={{ background: "#122840" }}
         >
-          <method.icon className="w-6 h-6 lg:w-7 lg:h-7" style={{ color: "#FE8F04" }} />
+          <method.icon
+            className="w-6 h-6 lg:w-7 lg:h-7"
+            style={{ color: "#FE8F04" }}
+          />
         </div>
       </div>
       <h3 className="text-base font-medium text-pure mb-2">{method.title}</h3>
-      <p className="text-slate text-sm lg:text-base leading-relaxed flex-1">{method.description}</p>
+      <p className="text-slate text-sm lg:text-base leading-relaxed flex-1">
+        {method.description}
+      </p>
     </>
   );
 
@@ -323,7 +375,10 @@ function ContactMethodCard({ method }: { method: (typeof contactMethods)[0] }) {
         }}
       >
         {/* Wrap in div for ref */}
-        <div ref={cardRef} className="flex flex-col items-center text-center w-full h-full">
+        <div
+          ref={cardRef}
+          className="flex flex-col items-center text-center w-full h-full"
+        >
           {cardContent}
         </div>
       </a>
