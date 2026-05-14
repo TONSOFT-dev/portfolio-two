@@ -33,7 +33,8 @@ export default function AboutPage() {
         title="Key Milestones That Define Our Journey"
         stats={statsWithLabels}
         imagePosition="right"
-        useGradientPanel={true}
+        imageSrc="/our-numbers.jpg"
+        imageAlt="TONSOFT achievements and growth metrics"
       />
 
       {/* Vision Section */}
