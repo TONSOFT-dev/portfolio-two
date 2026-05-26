@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import FadeIn from "@/components/animations/FadeIn";
 import SectionHeader from "@/components/ui/SectionHeader";
 
@@ -21,14 +22,25 @@ export default function AboutHeroSection() {
       ref={sectionRef}
       className="relative h-screen overflow-hidden overflow-x-hidden"
     >
-      {/* CSS Animated Background — no car images */}
+      {/* Hero background image with branded overlays */}
       <div className="absolute inset-0">
         <motion.div
           className="absolute top-[90px] sm:top-[90px] md:top-[115px] xl:top-[125px] left-3 md:left-3 lg:left-4 xl:left-5 right-3 md:right-3 lg:right-4 xl:right-5 bottom-3 md:bottom-3 lg:bottom-4 xl:bottom-5 rounded-2xl overflow-hidden"
           style={{ y: backgroundY }}
         >
-          {/* Navy base */}
-          <div className="absolute inset-0" style={{ background: "#0E2336" }} />
+          <Image
+            src="/about.webp"
+            alt="TONSOFT team and engineering environment"
+            fill
+            priority
+            className="object-cover"
+          />
+
+          {/* Navy tint to align image with brand palette */}
+          <div
+            className="absolute inset-0"
+            style={{ background: "rgba(14,35,54,0.6)" }}
+          />
 
           {/* Amber orb top-left */}
           <div
