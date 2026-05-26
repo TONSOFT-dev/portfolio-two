@@ -21,8 +21,8 @@ const quickLinks = [
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://linkedin.com/company/tonsoft", icon: Linkedin },
-  { name: "GitHub", href: "https://github.com/tonsoft", icon: Github },
-  { name: "Twitter (X)", href: "https://twitter.com/tonsoft", icon: Twitter },
+  // { name: "GitHub", href: "https://github.com/tonsoft", icon: Github },
+ // { name: "Twitter (X)", href: "https://twitter.com/tonsoft", icon: Twitter },
 ];
 
 const containerVariants: Variants = {
@@ -157,10 +157,11 @@ export default function Footer() {
               <p className="text-slate text-sm leading-relaxed">
                 📧{" "}
                 <a
-                  href="mailto:hello@tonsoft.io"
+                  href="mailto:info@tonsoft.org
+                  "
                   className="hover:text-solis transition-colors"
                 >
-                  hello@tonsoft.io
+                  info@tonsoft.org
                 </a>
               </p>
               <p className="text-slate text-sm leading-relaxed">

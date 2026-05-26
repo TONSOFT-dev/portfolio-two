@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { services } from "@/lib/data/services";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/animations/FadeIn";
@@ -29,8 +30,101 @@ function ServiceCard({ service, index = 0, totalCards = 4, containerRef }: Servi
       containerRef={containerRef}
       className="lg:col-span-1"
     >
-      <div className="h-[500px] sm:h-[550px] md:h-[580px] lg:h-[600px]">
-        <GlobalServiceCard service={service} icon={IconComponent} index={index} />
+      <div className="group block">
+        <div
+          className="relative overflow-hidden rounded-2xl h-[400px] sm:h-[480px] md:h-[440px] lg:h-[480px] xl:h-[560px] min-h-[400px]"
+          style={{ background: "#122840" }}
+        >
+          {/* Service image layer */}
+          <Image
+            src={service.image}
+            alt={service.name}
+            fill
+            priority={index < 2}
+            className="object-cover opacity-[0.40] group-hover:opacity-[0.55] transition-opacity duration-700"
+            style={{
+              filter: "saturate(1.05) contrast(1.05)",
+              mixBlendMode: "screen",
+            }}
+          />
+
+          {/* Animated background glow */}
+          <div
+            className="absolute inset-0 opacity-30 group-hover:opacity-60 transition-opacity duration-700"
+            style={{
+              background:
+                "radial-gradient(ellipse at 30% 40%, rgba(254,143,4,0.2) 0%, transparent 60%)",
+            }}
+          />
+
+          {/* Grid pattern */}
+          <div
+            className="absolute inset-0 opacity-[0.06]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(254,143,4,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(254,143,4,0.5) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          {/* Image readability overlay */}
+          <div className="absolute inset-0 bg-[rgba(14,35,54,0.18)]" />
+
+          {/* Overlay gradient */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(14,35,54,0.95) 0%, rgba(14,35,54,0.5) 50%, transparent 100%)",
+            }}
+          />
+
+          {/* Content */}
+          <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8 md:p-10">
+            {/* Top row: icon + badge */}
+            <div className="flex items-center justify-between">
+              <div
+                className="flex items-center justify-center w-14 h-14 rounded-2xl border"
+                style={{
+                  background: "rgba(254,143,4,0.1)",
+                  borderColor: "rgba(254,143,4,0.3)",
+                }}
+              >
+                <IconComponent
+                  className="w-7 h-7"
+                  style={{ color: "#FE8F04" }}
+                  strokeWidth={1.5}
+                />
+              </div>
+              <span
+                className="px-3 py-1 rounded-full text-xs font-semibold"
+                style={{
+                  background: "rgba(254,143,4,0.15)",
+                  color: "#FE8F04",
+                  border: "1px solid rgba(254,143,4,0.3)",
+                }}
+              >
+                {service.badge}
+              </span>
+            </div>
+
+            {/* Bottom: name + description */}
+            <div className="flex flex-col gap-3">
+              <p className="text-slate text-sm font-medium uppercase tracking-widest">
+                {service.category}
+              </p>
+              <h3
+                className="text-pure text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight group-hover:text-solis transition-colors duration-300"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                {service.name}
+              </h3>
+              <p className="text-slate text-sm sm:text-base leading-relaxed max-w-sm">
+                {service.shortDescription}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </ScrollStack>
   );
