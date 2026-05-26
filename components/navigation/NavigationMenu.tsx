@@ -78,15 +78,15 @@ export default function NavigationMenu({
               ? cn(
                   "absolute top-full right-0 mt-5 w-[324px] z-60",
                   GLASS_CLASSES,
-                  "backdrop-blur-3xl"
+                  "backdrop-blur-3xl",
                 )
-              : "lg:hidden overflow-hidden bg-[rgba(14,35,54,0.95)] backdrop-blur-3xl border-t border-[rgba(254,143,4,0.2)]"
+              : "lg:hidden overflow-hidden bg-[rgba(14,35,54,0.95)] backdrop-blur-3xl border-t border-[rgba(254,143,4,0.2)]",
           )}
         >
           <div
             className={cn(
               "p-3",
-              !isDropdown && "w-full max-w-[1315px] mx-auto px-5"
+              !isDropdown && "w-full max-w-[1315px] mx-auto px-5",
             )}
           >
             {/* Navigation Links */}
@@ -95,11 +95,10 @@ export default function NavigationMenu({
                 <Link
                   key={link.name}
                   href={link.href}
+                  prefetch={true}
                   onClick={() => {
-                    // Allow navigation to proceed first, then close menu
-                    setTimeout(() => {
-                      onClose();
-                    }, 150);
+                    // Immediately close the menu to free up main thread resources
+                    onClose();
                   }}
                   className="block text-pure font-light text-base lg:text-lg xl:text-xl leading-6 hover:text-solis transition-colors duration-200 cursor-pointer"
                 >
@@ -110,12 +109,15 @@ export default function NavigationMenu({
                       </span>
                     }
                     hoverContent={
-                      <span className="block font-light text-base lg:text-lg xl:text-xl leading-6" style={{ color: "#FE8F04" }}>
+                      <span
+                        className="block font-light text-base lg:text-lg xl:text-xl leading-6"
+                        style={{ color: "#FE8F04" }}
+                      >
                         {link.name}
                       </span>
                     }
                     axis="x"
-                    duration={0.6}
+                    duration={0.4}
                     transformOrigin="left center"
                     className="w-full"
                   />
