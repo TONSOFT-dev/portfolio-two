@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useRef, type CSSProperties } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { Code2, Cloud, Zap, Shield } from "lucide-react";
 
@@ -37,61 +38,235 @@ const HERO_CONFIG = {
 
 export default function HeroSection() {
   const { content, animations } = HERO_CONFIG;
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 18 }).map((_, i) => ({
+        id: i,
+        left: `${(i * 37) % 100}%`,
+        top: `${(i * 29) % 100}%`,
+        size: 1 + ((i * 7) % 3),
+        opacity: 0.18 + (((i * 11) % 10) / 60),
+        depth: 6 + ((i * 13) % 18),
+        drift: 8 + ((i * 5) % 16),
+        delay: (i % 9) * 0.25,
+      })),
+    []
+  );
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const setVars = (nx: number, ny: number, px: number, py: number) => {
+      el.style.setProperty("--nx", String(nx));
+      el.style.setProperty("--ny", String(ny));
+      el.style.setProperty("--px", `${px}%`);
+      el.style.setProperty("--py", `${py}%`);
+    };
+
+    // Defaults (also used for reduced motion)
+    setVars(0, 0, 50, 45);
+    if (prefersReducedMotion) return;
+
+    let raf = 0;
+    let last: { nx: number; ny: number; px: number; py: number } | null = null;
+
+    const commit = () => {
+      raf = 0;
+      if (!last) return;
+      setVars(last.nx, last.ny, last.px, last.py);
+    };
+
+    const handlePointerMove = (e: PointerEvent) => {
+      // Avoid heavy work on touch devices (pointerType can be "mouse" | "pen" | "touch")
+      if (e.pointerType === "touch") return;
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const clampedX = Math.max(0, Math.min(1, x));
+      const clampedY = Math.max(0, Math.min(1, y));
+
+      last = {
+        px: clampedX * 100,
+        py: clampedY * 100,
+        nx: (clampedX - 0.5) * 2,
+        ny: (clampedY - 0.5) * 2,
+      };
+
+      if (!raf) raf = requestAnimationFrame(commit);
+    };
+
+    const handlePointerLeave = () => {
+      last = { nx: 0, ny: 0, px: 50, py: 45 };
+      if (!raf) raf = requestAnimationFrame(commit);
+    };
+
+    el.addEventListener("pointermove", handlePointerMove, { passive: true });
+    el.addEventListener("pointerleave", handlePointerLeave, { passive: true });
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      el.removeEventListener("pointermove", handlePointerMove);
+      el.removeEventListener("pointerleave", handlePointerLeave);
+    };
+  }, [prefersReducedMotion]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col">
-      {/* Animated CSS gradient background */}
-      <div className="absolute inset-0 z-0">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen overflow-hidden flex flex-col"
+      style={
+        {
+          background: "#0E2336",
+          // Used by our parallax CSS transforms (updated on pointer move).
+          ["--nx" as never]: 0,
+          ["--ny" as never]: 0,
+          ["--px" as never]: "50%",
+          ["--py" as never]: "45%",
+        } as CSSProperties
+      }
+    >
+      {/* Interactive parallax background */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        {/* Mouse spotlight */}
         <div
           className="absolute inset-0"
           style={{
-            background: "#0E2336",
+            backgroundImage:
+              "radial-gradient(700px circle at var(--px) var(--py), rgba(254,143,4,0.16), transparent 55%)",
           }}
         />
-        {/* Amber orb top-left */}
         <div
-          className="absolute rounded-full tonsoft-orb pointer-events-none"
-          style={{
-            width: "600px",
-            height: "600px",
-            top: "-100px",
-            left: "-150px",
-            background: "radial-gradient(circle, rgba(254,143,4,0.18) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
-        {/* Amber orb bottom-right */}
-        <div
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: "500px",
-            height: "500px",
-            bottom: "-100px",
-            right: "-100px",
-            background: "radial-gradient(circle, rgba(254,143,4,0.12) 0%, transparent 70%)",
-            filter: "blur(60px)",
-            animationDelay: "3s",
-          }}
-        />
-        {/* Subtle mid-tone glow */}
-        <div
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: "700px",
-            height: "400px",
-            top: "40%",
-            left: "30%",
-            background: "radial-gradient(ellipse, rgba(18,40,64,0.8) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-        {/* Grid pattern overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.04]"
+          className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(254,143,4,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(254,143,4,0.5) 1px, transparent 1px)",
+              "radial-gradient(900px circle at var(--px) var(--py), rgba(99, 102, 241, 0.08), transparent 60%)",
+          }}
+        />
+
+        {/* Orbs (depth layer) */}
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: "640px",
+            height: "640px",
+            top: "-140px",
+            left: "-180px",
+            background: "radial-gradient(circle, rgba(254,143,4,0.20) 0%, transparent 70%)",
+            filter: "blur(44px)",
+            transform: prefersReducedMotion
+              ? undefined
+              : "translate3d(calc(var(--nx) * 18px), calc(var(--ny) * 14px), 0)",
+            transition: "transform 120ms ease-out",
+          }}
+        />
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: "540px",
+            height: "540px",
+            bottom: "-140px",
+            right: "-140px",
+            background: "radial-gradient(circle, rgba(254,143,4,0.14) 0%, transparent 70%)",
+            filter: "blur(70px)",
+            transform: prefersReducedMotion
+              ? undefined
+              : "translate3d(calc(var(--nx) * -26px), calc(var(--ny) * -18px), 0)",
+            transition: "transform 120ms ease-out",
+          }}
+        />
+
+        {/* Soft mid-tone glow */}
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: "780px",
+            height: "460px",
+            top: "36%",
+            left: "26%",
+            background: "radial-gradient(ellipse, rgba(18,40,64,0.85) 0%, transparent 70%)",
+            filter: "blur(90px)",
+            transform: prefersReducedMotion
+              ? undefined
+              : "translate3d(calc(var(--nx) * 10px), calc(var(--ny) * 8px), 0)",
+            transition: "transform 120ms ease-out",
+          }}
+        />
+
+        {/* Grid overlay with parallax */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.045]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(254,143,4,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(254,143,4,0.55) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
+            transform: prefersReducedMotion
+              ? undefined
+              : "translate3d(calc(var(--nx) * 6px), calc(var(--ny) * 6px), 0)",
+            transition: "transform 120ms ease-out",
+            maskImage: "radial-gradient(60% 60% at 50% 45%, black 55%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(60% 60% at 50% 45%, black 55%, transparent 100%)",
+          }}
+        />
+
+        {/* Noise for depth */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.10] mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E\")",
+          }}
+        />
+
+        {/* Floating particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          {particles.map((p) => (
+            <motion.span
+              key={p.id}
+              className="absolute rounded-full"
+              style={{
+                left: p.left,
+                top: p.top,
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                background: "rgba(254,143,4,0.85)",
+                opacity: p.opacity,
+                filter: "blur(0.2px)",
+                ["--dx" as never]: `${p.depth}px`,
+                ["--dy" as never]: `${p.depth}px`,
+                transform: prefersReducedMotion
+                  ? undefined
+                  : "translate3d(calc(var(--nx) * var(--dx)), calc(var(--ny) * var(--dy)), 0)",
+              }}
+              animate={
+                prefersReducedMotion
+                  ? undefined
+                  : {
+                      y: [0, -p.drift, 0],
+                      opacity: [p.opacity, p.opacity + 0.10, p.opacity],
+                    }
+              }
+              transition={
+                prefersReducedMotion
+                  ? undefined
+                  : {
+                      duration: 5 + (p.id % 7),
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: p.delay,
+                    }
+              }
+            />
+          ))}
+        </div>
+
+        {/* Top fade for header readability */}
+        <div
+          className="absolute inset-x-0 top-0 h-44 pointer-events-none"
+          style={{
+            background: "linear-gradient(to bottom, rgba(14,35,54,0.95), rgba(14,35,54,0.0))",
           }}
         />
       </div>
