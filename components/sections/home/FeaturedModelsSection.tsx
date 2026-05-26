@@ -8,9 +8,10 @@ import FadeIn from "@/components/animations/FadeIn";
 import Container from "@/components/ui/Container";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollStack from "@/components/animations/ScrollStack";
-import { Code2, Cloud, Settings, Shield } from "lucide-react";
+import GlobalServiceCard from "@/app/services/ServiceCard";
+import { Code2, CloudCog, Network, ShieldCheck } from "lucide-react";
 
-const serviceIcons = [Code2, Cloud, Settings, Shield];
+const serviceIcons = [Code2, CloudCog, Network, ShieldCheck];
 
 interface ServiceCardProps {
   service: (typeof services)[0];
@@ -173,7 +174,7 @@ export default function FeaturedModelsSection() {
           </div>
         </div>
 
-        <div className="text-center md:text-right">
+        <div className="mt-16 sm:mt-24 text-center md:text-right">
           <Button
             href="/services"
             variant="outline"
