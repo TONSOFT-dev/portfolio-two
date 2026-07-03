@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Founder — Ahamed Nibras Jalaldeen",
-  description: "Meet the founder of TONSOFT — Ahamed Nibras Jalaldeen, former Senior SDE at Amazon Web Services.",
+  description: "Meet the founder of TONSOFT — Ahamed Nibras Jalaldeen, 8+ years building high-availability systems at Amazon Web Services and Tamara Finance.",
 };
 
 const skills = [
@@ -18,12 +18,24 @@ const skills = [
   "Microservices",
 ];
 
+const credentials = [
+  "AWS Cloud Solutions Architect Professional Certificate",
+  "BSc Computer Science & Engineering, University of Moratuwa",
+  "Full-Stack Web Development Specialization, HKUST",
+];
+
 const experience = [
+  {
+    role: "Fintech Platform Lead",
+    company: "Tamara Finance",
+    location: "Remote",
+    description: "Led the migration of core Buy-Now-Pay-Later financing workflows from a legacy PHP monolith to distributed Java microservices, raising platform availability from 83% to 99.9%. Architected a reusable multi-product financing platform that cut new financial-product development time from ~4 months to ~2 weeks.",
+  },
   {
     role: "Senior Software Development Engineer",
     company: "Amazon Web Services (AWS)",
     location: "Berlin, Germany",
-    description: "Built scalable, event-driven cloud systems and led high-availability architecture improvements for AWS infrastructure serving millions of customers globally.",
+    description: "Designed a distributed billing data platform processing over 1M requests/sec at 99.995% availability. Led the AWS Partition Launch project, coordinating 50+ global teams to cut new-region launch time from 18 months to 5 days — a 110x improvement. Rearchitected AWS's legacy billing data warehouse, cutting storage consumption by 90% and batch export latency by 8x, and ran a cost-optimization initiative that delivered $10M in annual AWS savings.",
   },
   {
     role: "Software Engineer",
@@ -76,17 +88,26 @@ export default function FounderPage() {
                   </h1>
                 </FadeIn>
                 <p className="text-slate leading-relaxed mb-4">
-                  Ahamed Nibras Jalaldeen is a Software Engineer with over 7 years of experience specializing in distributed systems, cloud computing, and DevOps. He has worked at Amazon Web Services (AWS) in Berlin, contributing to large-scale, high-availability systems.
+                  Ahamed Nibras Jalaldeen is a Software Engineer with 8+ years building high-availability, cloud-native systems — over four years at Amazon Web Services building the billing infrastructure that supports AWS itself, followed by a role leading fintech platform modernization at Tamara Finance, one of the Middle East&apos;s largest Buy-Now-Pay-Later providers.
                 </p>
                 <p className="text-slate leading-relaxed mb-8">
-                  At TONSOFT, Nibras brings that same level of engineering discipline and ambition to every project — building systems that are not just functional, but resilient, scalable, and built to last.
+                  At TONSOFT, Nibras brings that same engineering discipline — architecture decision records, fault-tolerant design, production-readiness rigor — to every client engagement.
                 </p>
 
                 {/* Skill badges */}
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {skills.map((skill) => (
                     <span key={skill} className="px-3 py-1.5 rounded-full text-sm font-medium" style={{ background: "rgba(254,143,4,0.12)", color: "#FE8F04", border: "1px solid rgba(254,143,4,0.3)" }}>
                       {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Credentials */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {credentials.map((credential) => (
+                    <span key={credential} className="px-3 py-1.5 rounded-full text-sm font-medium text-slate" style={{ background: "rgba(148,163,184,0.08)", border: "1px solid rgba(148,163,184,0.2)" }}>
+                      {credential}
                     </span>
                   ))}
                 </div>

@@ -1,17 +1,16 @@
 import { CompanyStats } from "@/types";
 import { formatStat } from "@/lib/utils";
 
-// TONSOFT company stats
+// TONSOFT founder track-record stats — verifiable figures from AWS + Tamara Finance
 const rawStats = {
-  yearsExperience: 7,
-  projectsDelivered: 50,
+  yearsExperience: 8,
   cloudArchitectures: 10,
   satisfactionRate: 100,
 };
 
 export const companyStats: CompanyStats = {
   totalBookings: formatStat(rawStats.yearsExperience, "count"),
-  modelsInStock: formatStat(rawStats.projectsDelivered, "count"),
+  modelsInStock: formatStat(rawStats.yearsExperience, "count"),
   clientsSatisfaction: formatStat(rawStats.cloudArchitectures, "count"),
   dailyBookings: formatStat(rawStats.satisfactionRate, "percentage"),
 };
@@ -22,8 +21,8 @@ export interface StatItem {
 }
 
 export const statsWithLabels: StatItem[] = [
-  { label: "Years Experience", value: "7+" },
-  { label: "Projects Delivered", value: "50+" },
-  { label: "Cloud Architectures", value: "10+" },
-  { label: "Client Satisfaction", value: "100%" },
+  { label: "Years Enterprise Engineering", value: "8+" },
+  { label: "Req/Sec Systems Shipped", value: "1M+" },
+  { label: "AWS Cost Savings Delivered", value: "$10M" },
+  { label: "Faster Region Launches", value: "110x" },
 ];

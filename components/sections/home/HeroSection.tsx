@@ -8,12 +8,12 @@ import { Code2, Cloud, Zap, Shield } from "lucide-react";
 const HERO_CONFIG = {
   content: {
     eyebrow: "Software Engineering · Cloud Architecture · DevOps",
-    headline: "Building Scalable, Secure, and Intelligent Software Systems",
+    headline: "Scalable Software Systems, Built by Engineers Who've Shipped at AWS Scale",
     subtext:
-      "TONSOFT is a modern software company focused on delivering high-performance products and enterprise-grade solutions.",
+      "TONSOFT is a software consultancy founded by a Senior Software Engineer with 8+ years building high-availability, cloud-native systems at Amazon Web Services and Tamara Finance. We help startups and scaleups modernize legacy platforms, architect for reliability, and ship faster — without the guesswork.",
     cta: {
-      primary: { text: "Get in Touch", href: "/contact" },
-      secondary: { text: "View Our Work", href: "/projects" },
+      primary: { text: "Book a Technical Consultation", href: "/contact" },
+      secondary: { text: "View Our Track Record", href: "/projects" },
     },
     badges: [
       { icon: Code2, label: "Product-Driven Engineering" },
@@ -300,10 +300,9 @@ export default function HeroSection() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px] font-bold text-pure leading-[1.05] tracking-tight max-w-5xl"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              Building{" "}
-              <span style={{ color: "#FE8F04" }}>Scalable</span>,{" "}
-              <span style={{ color: "#FE8F04" }}>Secure</span>, and
-              <br className="hidden lg:block" /> Intelligent Software Systems
+              <span style={{ color: "#FE8F04" }}>Scalable</span> Software Systems, Built by
+              Engineers Who&apos;ve Shipped
+              <br className="hidden lg:block" /> at <span style={{ color: "#FE8F04" }}>AWS Scale</span>
             </h1>
             <p className="mt-6 text-base md:text-lg text-slate max-w-2xl leading-relaxed md:hidden">
               {content.subtext}

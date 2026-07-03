@@ -11,7 +11,12 @@ import ScrollStack from "@/components/animations/ScrollStack";
 import GlobalServiceCard from "@/app/services/ServiceCard";
 import { Code2, CloudCog, Network, ShieldCheck } from "lucide-react";
 
-const serviceIcons = [Code2, CloudCog, Network, ShieldCheck];
+const categoryIcons: Record<string, typeof Code2> = {
+  Engineering: Code2,
+  Infrastructure: CloudCog,
+  Architecture: Network,
+  Security: ShieldCheck,
+};
 
 interface ServiceCardProps {
   service: (typeof services)[0];
@@ -21,7 +26,7 @@ interface ServiceCardProps {
 }
 
 function ServiceCard({ service, index = 0, totalCards = 4, containerRef }: ServiceCardProps) {
-  const IconComponent = serviceIcons[index % serviceIcons.length];
+  const IconComponent = categoryIcons[service.category] ?? Code2;
 
   return (
     <ScrollStack

@@ -10,7 +10,12 @@ import Button from "@/components/ui/Button";
 import ServiceCard from "./ServiceCard";
 import { Code2, CloudCog, Network, ShieldCheck } from "lucide-react";
 
-const serviceIcons = [Code2, CloudCog, Network, ShieldCheck];
+const categoryIcons: Record<string, typeof Code2> = {
+  Engineering: Code2,
+  Infrastructure: CloudCog,
+  Architecture: Network,
+  Security: ShieldCheck,
+};
 const categories = ["All", "Engineering", "Infrastructure", "Architecture", "Security"];
 
 export default function ServicesPage() {
@@ -82,7 +87,7 @@ export default function ServicesPage() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
             {filtered.map((service, index) => {
-              const IconComponent = serviceIcons[services.indexOf(service) % serviceIcons.length];
+              const IconComponent = categoryIcons[service.category] ?? Code2;
               return (
                 <ServiceCard
                   key={service.id}

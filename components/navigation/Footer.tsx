@@ -8,16 +8,9 @@ import { useRef } from "react";
 import Logo from "./Logo";
 import Button from "@/components/ui/Button";
 import Flip3DText from "@/components/animations/Flip3DText";
+import { NAV_LINKS } from "./config";
 
-const quickLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Products", href: "/products" },
-  { name: "Projects", href: "/projects" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact", href: "/contact" },
-];
+const quickLinks = NAV_LINKS;
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://linkedin.com/company/tonsoft", icon: Linkedin },
@@ -90,9 +83,9 @@ export default function Footer() {
               variants={itemVariants}
               className="text-slate max-w-md mb-6 leading-relaxed"
             >
-              Building Scalable, Secure &amp; Intelligent Software Systems.
-              Founded by a former Senior Engineer at Amazon Web Services — bringing
-              global engineering standards to every project.
+              Let&apos;s build something that scales. Founder-led, enterprise-tested —
+              TONSOFT brings production-grade engineering discipline from 8+ years at
+              Amazon Web Services and Tamara Finance to every project.
             </motion.p>
             <motion.div variants={itemVariants}>
               <Button

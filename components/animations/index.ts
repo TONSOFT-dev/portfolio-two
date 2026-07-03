@@ -4,7 +4,6 @@ export { default as DecryptedText } from "./DecryptedText";
 export { default as FadeIn } from "./FadeIn";
 export { default as Flip3D } from "./Flip3D";
 export { default as Flip3DText } from "./Flip3DText";
-export { default as MovingTestimonials } from "./MovingTestimonials";
 export { default as ScrollReveal } from "./ScrollReveal";
 export { default as ScrollBackgroundAnimation } from "./ScrollBackgroundAnimation";
 export { default as ScrollStack } from "./ScrollStack";

@@ -1,6 +1,6 @@
 # TONSOFT — Scalable Software Systems
 
-> **Founder [Ahamed Nibras Jalaldeen](https://linkedin.com/in/nibras-jalaldeen)** · Former Senior SDE @ Amazon Web Services
+> **Founder [Ahamed Nibras Jalaldeen](https://linkedin.com/in/nibras-jalaldeen)** · 8+ years at Amazon Web Services & Tamara Finance
 
 A modern, high-performance portfolio website for **TONSOFT** — a next-generation software engineering company focused on building reliable, scalable, and secure systems for modern businesses.
 
@@ -10,12 +10,12 @@ A modern, high-performance portfolio website for **TONSOFT** — a next-generati
 
 | Route | Page |
 |---|---|
-| `/` | Home — Hero, Stats, Services Preview, Why TONSOFT, Process, Testimonials, Products |
+| `/` | Home — Hero, Stats, Services Preview, Why TONSOFT, Process, Products |
 | `/about` | About TONSOFT — Company story, team milestones, vision |
-| `/services` | Services — Filterable grid of all 4 software services |
+| `/services` | Services — Filterable grid of all 6 software services |
 | `/products` | Products — In-development & coming soon products |
 | `/tech-stack` | Tech Stack — Backend, Cloud, DevOps, Architecture |
-| `/projects` | Projects — Delivered case studies with metrics |
+| `/projects` | Track Record — Founder's pre-TONSOFT case studies with metrics |
 | `/careers` | Careers — Open roles + general application |
 | `/contact` | Contact — Form + contact methods |
 | `/founder` | Founder — Ahamed Nibras Jalaldeen bio & experience |
@@ -80,7 +80,7 @@ portfolio2/
 │   ├── sections/
 │   │   ├── home/             # HeroSection, StatsSection, FeaturedModelsSection
 │   │   │                     # WhyChooseUsSection, HowItWorksSection,
-│   │   │                     # TestimonialsSection, BlogPreviewSection
+│   │   │                     # BlogPreviewSection
 │   │   ├── about/            # AboutHeroSection, AboutStorySection, AboutShowroomSection
 │   │   └── contact/          # ContactFormSection
 │   ├── animations/           # FadeIn, Flip3D, SplitTextReveal, ScrollStack, etc.
