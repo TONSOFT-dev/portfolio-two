@@ -5,50 +5,41 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Projects — TONSOFT Portfolio",
-  description: "Explore the systems TONSOFT has engineered — cloud, backend, DevOps.",
+  title: "Track Record — TONSOFT",
+  description:
+    "The systems our founder built at Amazon Web Services and Tamara Finance before founding TONSOFT — real production work at real scale.",
 };
 
 const projects = [
   {
     id: "1",
-    name: "High-Availability Event Platform",
-    category: "Cloud Architecture",
+    name: "Fintech Platform Modernization",
+    category: "Fintech",
+    org: "Tamara Finance",
     description:
-      "Multi-region, event-driven platform on AWS processing millions of events per day with sub-100ms latency. Active-active failover using Lambda, Kinesis, SQS, and DynamoDB.",
-    techStack: ["AWS Lambda", "Kinesis", "SQS", "DynamoDB", "CloudFront"],
-    metrics: ["99.99% uptime", "< 100ms P99", "10M+ events/day"],
-    status: "Delivered",
+      "A consumer-finance platform running on a legacy PHP monolith struggled with reliability and slow product launches. Migrated core BNPL workflows to a distributed Java microservices architecture with service isolation and fault-tolerant orchestration, and transitioned the data layer from relational SQL to NoSQL with Redis caching for checkout workloads.",
+    techStack: ["Java", "Microservices", "NoSQL", "Redis", "Service Isolation"],
+    metrics: ["83% → 99.9% uptime", "4mo → 2wk product dev", "BNPL workflows"],
   },
   {
     id: "2",
-    name: "Microservices Migration",
-    category: "System Design",
+    name: "Global-Scale Billing Infrastructure",
+    category: "Cloud Infrastructure",
+    org: "AWS",
     description:
-      "Led migration of a monolithic enterprise app to microservices on ECS/Fargate with service mesh, distributed tracing, and automated CI/CD — zero downtime.",
-    techStack: ["AWS ECS", "Docker", "GitHub Actions", "PostgreSQL", "Redis"],
-    metrics: ["0 downtime incidents", "65% cost reduction", "12 services"],
-    status: "Delivered",
+      "AWS needed to launch billing services in new cloud regions faster, coordinating across dozens of internal teams. Redesigned the region-launch process end-to-end, introducing new tooling and workflows across 50+ global teams.",
+    techStack: ["AWS", "Billing Systems", "Region-Launch Tooling", "Cross-Team Coordination"],
+    metrics: ["18mo → 5 days", "110x faster", "50+ teams coordinated"],
   },
   {
     id: "3",
-    name: "FinTech API Platform",
-    category: "Backend Engineering",
+    name: "Data Warehouse Re-architecture",
+    category: "Data Infrastructure",
+    org: "AWS",
     description:
-      "Secure financial API platform for payment processing, reconciliation, and reporting. PCI-DSS compliant with end-to-end encryption via AWS KMS.",
-    techStack: ["Node.js", "API Gateway", "RDS", "KMS", "WAF"],
-    metrics: ["PCI-DSS compliant", "100K+ calls/day", "< 50ms avg"],
-    status: "Delivered",
-  },
-  {
-    id: "4",
-    name: "DevOps Automation Suite",
-    category: "DevOps",
-    description:
-      "Full CI/CD infrastructure with automated testing, blue-green production releases, and Terraform-managed infrastructure provisioning.",
-    techStack: ["Terraform", "GitHub Actions", "Docker", "AWS", "Kubernetes"],
-    metrics: ["4h → 8min deploys", "100% automated tests", "Zero manual ops"],
-    status: "Delivered",
+      "A legacy billing data warehouse had become a performance bottleneck. Rearchitected the platform end-to-end to eliminate structural inefficiencies in storage and batch processing.",
+    techStack: ["AWS", "Data Warehousing", "Batch Processing", "Storage Optimization"],
+    metrics: ["90% storage reduction", "12hr → 1.5hr exports", "8x faster"],
   },
 ];
 
@@ -58,15 +49,17 @@ export default function ProjectsPage() {
       <section className="py-12 sm:py-16 md:py-20">
         <Container>
           <div className="text-center mb-16">
-            <SectionHeader text="Projects" center />
+            <SectionHeader text="Track Record" center />
             <FadeIn delay={0.1}>
               <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-pure leading-[1.2] mt-4" style={{ fontFamily: "var(--font-syne)" }}>
-                Systems We&apos;ve Engineered
+                The Track Record Behind TONSOFT
               </h1>
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="mt-4 text-slate text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                A selection of production systems and platforms we have designed, built, and delivered.
+                TONSOFT is a new consultancy, but not a new team. Before founding TONSOFT, our
+                founder built and shipped the systems below at Amazon Web Services and Tamara
+                Finance — real production systems, at real scale.
               </p>
             </FadeIn>
           </div>
@@ -79,7 +72,7 @@ export default function ProjectsPage() {
                   <div className="relative z-10 flex flex-col gap-4 h-full">
                     <div className="flex items-center justify-between flex-wrap gap-2">
                       <span className="text-slate text-xs uppercase tracking-widest">{project.category}</span>
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(254,143,4,0.15)", color: "#FE8F04", border: "1px solid rgba(254,143,4,0.3)" }}>✓ {project.status}</span>
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(254,143,4,0.15)", color: "#FE8F04", border: "1px solid rgba(254,143,4,0.3)" }}>{project.org}</span>
                     </div>
                     <h2 className="text-pure text-xl sm:text-2xl font-bold leading-tight group-hover:text-solis transition-colors duration-300" style={{ fontFamily: "var(--font-syne)" }}>{project.name}</h2>
                     <p className="text-slate text-sm leading-relaxed flex-1">{project.description}</p>
@@ -103,9 +96,9 @@ export default function ProjectsPage() {
 
           <FadeIn delay={0.3}>
             <div className="text-center">
-              <p className="text-slate text-lg mb-6">Ready to add your project to this list?</p>
+              <p className="text-slate text-lg mb-6">Ask us for direct references from this work — we&apos;re happy to connect you.</p>
               <Button href="/contact" variant="outline" className="text-solis border-solis hover:bg-transparent hover:text-solis" arrowBgClassName="bg-solis">
-                Start a Project
+                Book a Technical Consultation
               </Button>
             </div>
           </FadeIn>

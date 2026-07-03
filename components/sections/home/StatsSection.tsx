@@ -112,10 +112,9 @@ export default function StatsSection() {
             className="col-span-12 md:col-span-12 lg:col-span-5"
           >
             <p className="text-slate text-sm sm:text-base md:text-lg lg:text-base leading-relaxed">
-              TONSOFT is a next-generation software development company focused on building
-              reliable, scalable, and secure systems for modern businesses. Founded by a
-              former Senior Engineer at Amazon Web Services, we bring global engineering
-              standards to every project.
+              TONSOFT is a software consultancy founded by a Senior Software Engineer with
+              8+ years building high-availability, cloud-native systems at Amazon Web Services
+              and Tamara Finance. We bring that same engineering discipline to every project.
             </p>
           </FadeIn>
 

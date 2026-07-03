@@ -15,10 +15,10 @@ gsap.registerPlugin(ScrollTrigger);
 const contactMethods = [
   {
     icon: Mail,
-    title: "hello@tonsoft.io",
+    title: "info@tonsoft.org",
     description:
       "Reach out anytime — our team responds swiftly and professionally to every inquiry.",
-    link: "mailto:hello@tonsoft.io",
+    link: "mailto:info@tonsoft.org",
   },
   {
     icon: MapPin,

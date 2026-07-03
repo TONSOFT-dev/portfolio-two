@@ -7,7 +7,7 @@ import { statsWithLabels } from "@/lib/data/stats";
 export const metadata: Metadata = {
   title: "About TONSOFT — We Build Software That Scales",
   description:
-    "Learn about TONSOFT, a modern software development company founded by a former Senior Engineer at Amazon Web Services. Discover our mission, values, and engineering approach.",
+    "Learn about TONSOFT, a software consultancy founded by a Senior Software Engineer with 8+ years at Amazon Web Services and Tamara Finance. Discover our mission, values, and engineering approach.",
 };
 
 export default function AboutPage() {
@@ -18,10 +18,10 @@ export default function AboutPage() {
       {/* Who We Are */}
       <AboutStorySection
         label="Who We Are"
-        title="TONSOFT Brings Global Engineering Standards to Every Project."
+        title="Founder-Led. Enterprise-Tested."
         paragraphs={[
-          "TONSOFT is a next-generation software development company focused on building reliable, scalable, and secure systems for modern businesses. Founded by a former Senior Engineer at Amazon Web Services, TONSOFT brings global engineering standards to every project — ensuring reliability, performance, and security.",
-          "We combine deep cloud architecture expertise with product-driven engineering to deliver software systems that scale with your business from day one.",
+          "TONSOFT is a software consultancy founded by Jalaldeen Ahamed Nibras, a software engineer who spent over four years at Amazon Web Services building the billing infrastructure that supports AWS itself, followed by a role leading fintech platform modernization at Tamara Finance, one of the Middle East's largest Buy-Now-Pay-Later providers.",
+          "We bring that same engineering discipline — architecture decision records, fault-tolerant design, production-readiness rigor — to every client engagement, combining deep cloud architecture expertise with product-driven engineering to deliver software systems that scale with your business from day one.",
         ]}
         imagePosition="left"
         useGradientPanel={true}

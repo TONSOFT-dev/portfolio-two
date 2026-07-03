@@ -36,14 +36,6 @@ export interface BlogPost {
   readTime: string;
 }
 
-export interface Testimonial {
-  id: string;
-  name: string;
-  location: string;
-  review: string;
-  rating: number;
-}
-
 export interface ContactFormData {
   firstName: string;
   lastName: string;
